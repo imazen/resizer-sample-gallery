@@ -27,7 +27,7 @@
         <div class="l-box">
             <h2>Submit a Photo</h2>
 
-            <form method="post" action="@Url.Action("upload")" enctype="multipart/form-data" class="pure-form">
+            <form method="post" action="@Url.Action("upload")" enctype="multipart/form-data" class="pure-form pure-form-stacked" >
                 <input type="file" name="file" placeholder="Photo URL" required>
                 <input type="text" name="author" placeholder="Author" required>
                 <button type="submit" class="pure-button">Submit</button>

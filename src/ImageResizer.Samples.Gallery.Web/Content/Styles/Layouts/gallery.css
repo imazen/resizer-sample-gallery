@@ -98,10 +98,21 @@ h1,h2,h3,h4,h5,h6 {
         border-radius: 4px;
         margin: 0.3em;
     }
-    .pure-form input[type] {
+    .pure-form-stacked input[type] {
         margin: 0.3em auto;
         text-align: center;
     }
+
+.pure-form input[type=file] {
+    padding: .5em .6em;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px #ddd;
+    border-radius: 4px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
 
 .footer {
     background: #111;
