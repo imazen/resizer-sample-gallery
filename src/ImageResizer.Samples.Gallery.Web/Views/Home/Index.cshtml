@@ -1,19 +1,11 @@
-﻿@{
+﻿@model ImageResizer.Samples.Gallery.Web.ViewModels.HomeViewModel
+
+@{
     ViewBag.Title = "ImageResizer Responsive Photo Gallery Sample";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="pure-g">
-    <div class="photo-box pure-u-1 pure-u-med-1-3 pure-u-lrg-1-4">
-        <a href="http://www.dillonmcintosh.tumblr.com/">
-            <img src="/Content/Images/InitialPurePhotos/tumblr_mvyxd9PUpZ1st5lhmo1_1280.jpg" alt="Beach">
-        </a>
-
-        <aside class="photo-box-caption">
-            <span>by <a href="http://www.dillonmcintosh.tumblr.com/">Dillon McIntosh</a></span>
-        </aside>
-    </div>
-
     <div class="text-box pure-u-1 pure-u-med-2-3 pure-u-lrg-3-4">
         <div class="l-box">
             <h1 class="text-box-head">Photos from around the world</h1>
@@ -21,90 +13,16 @@
         </div>
     </div>
 
+@foreach (var item in Model.Images) {
     <div class="photo-box pure-u-1 pure-u-med-1-2 pure-u-lrg-1-3">
-        <a href="http://ngkhanhlinh.dunked.com/">
-            <img src="/Content/Images/InitialPurePhotos/tumblr_mvyxhonf601st5lhmo1_1280.jpg" alt="Meadow">
+        <a href="#">
+            <img src="/Content/Images/Uploads/@item.FileName" />
         </a>
-
         <aside class="photo-box-caption">
-            <span>
-                by <a href="http://ngkhanhlinh.dunked.com/">Linh Nguyen</a>
-            </span>
+            <span>by <a href="#">@item.Author</a></span>
         </aside>
     </div>
-
-    <div class="photo-box pure-u-1 pure-u-med-1-2 pure-u-lrg-1-3">
-        <a href="http://www.nilssonlee.se/">
-            <img src="/Content/Images/InitialPurePhotos/tumblr_mve3rvxwaP1st5lhmo1_1280.jpg" alt="City">
-        </a>
-
-        <aside class="photo-box-caption">
-            <span>
-                by <a href="http://www.nilssonlee.se/">Jonas Nilsson Lee</a>
-            </span>
-        </aside>
-    </div>
-
-    <div class="photo-box pure-u-1 pure-u-med-1-2 pure-u-lrg-1-3">
-        <a href="http://www.flickr.com/photos/rulasibai/">
-            <img src="/Content/Images/InitialPurePhotos/tumblr_mrraat0H431st5lhmo1_1280.jpg" alt="Flowers">
-        </a>
-
-        <aside class="photo-box-caption">
-            <span>
-                by <a href="http://www.flickr.com/photos/rulasibai/">Rula Sibai</a>
-            </span>
-        </aside>
-    </div>
-
-    <div class="photo-box pure-u-1 pure-u-med-1-2 pure-u-lrg-1-3">
-        <a href="http://www.flickr.com/photos/charliefoster/">
-            <img src="/Content/Images/InitialPurePhotos/tumblr_mufs8mix841st5lhmo1_1280.jpg" alt="Bridge">
-        </a>
-
-        <aside class="photo-box-caption">
-            <span>
-                by <a href="http://www.flickr.com/photos/charliefoster/">Charlie Foster</a>
-            </span>
-        </aside>
-    </div>
-
-    <div class="photo-box photo-box-thin pure-u-1 pure-u-lrg-2-3">
-        <a href="http://ngkhanhlinh.dunked.com/">
-            <img src="/Content/Images/InitialPurePhotos/tumblr_mwhdohfePJ1st5lhmo1_1280.jpg" alt="Balloons">
-        </a>
-
-        <aside class="photo-box-caption">
-            <span>
-                by <a href="http://ngkhanhlinh.dunked.com/">Linh Nguyen</a>
-            </span>
-        </aside>
-    </div>
-
-    <div class="photo-box photo-box-thin pure-u-1 pure-u-med-2-3">
-        <a href="http://twitter.com/iBoZR">
-            <img src="/Content/Images/InitialPurePhotos/tumblr_mx3tnm96k81st5lhmo1_1280.jpg" alt="Rain Drops">
-        </a>
-
-        <aside class="photo-box-caption">
-            <span>
-                by <a href="http://twitter.com/iBoZR">Thanun Buranapong</a>
-            </span>
-        </aside>
-    </div>
-
-    <div class="photo-box pure-u-1 pure-u-med-1-3">
-        <a href="http://www.goodfreephotos.com/">
-            <img src="/Content/Images/InitialPurePhotos/tumblr_mx3tlblmY21st5lhmo1_1280.jpg" alt="Port">
-        </a>
-
-        <aside class="photo-box-caption">
-            <span>
-                by <a href="http://www.goodfreephotos.com/">Yinan Chen</a>
-            </span>
-        </aside>
-    </div>
-
+}
     <div class="pure-u-1 form-box">
         <div class="l-box">
             <h2>Submit a Photo</h2>

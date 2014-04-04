@@ -119,19 +119,20 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\HomeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Content Include="Content\Images\InitialPurePhotos\tumblr_mrraat0H431st5lhmo1_1280.jpg" />
-    <Content Include="Content\Images\InitialPurePhotos\tumblr_mufs8mix841st5lhmo1_1280.jpg" />
-    <Content Include="Content\Images\InitialPurePhotos\tumblr_mve3rvxwaP1st5lhmo1_1280.jpg" />
-    <Content Include="Content\Images\InitialPurePhotos\tumblr_mvyxd9PUpZ1st5lhmo1_1280.jpg" />
-    <Content Include="Content\Images\InitialPurePhotos\tumblr_mvyxhonf601st5lhmo1_1280.jpg" />
-    <Content Include="Content\Images\InitialPurePhotos\tumblr_mwhdohfePJ1st5lhmo1_1280.jpg" />
-    <Content Include="Content\Images\InitialPurePhotos\tumblr_mx3tlblmY21st5lhmo1_1280.jpg" />
-    <Content Include="Content\Images\InitialPurePhotos\tumblr_mx3tnm96k81st5lhmo1_1280.jpg" />
+    <Content Include="Content\Images\Uploads\0aa1c167-bf66-4bc3-8e2b-1005ab8633c9.jpg" />
+    <Content Include="Content\Images\Uploads\157205c7-70ed-47a8-9a32-30d40609d01c.jpg" />
+    <Content Include="Content\Images\Uploads\16f32301-3d3e-447c-81b0-0e26ec647714.jpg" />
+    <Content Include="Content\Images\Uploads\278df193-c6bb-45c2-b30e-6a7716316c11.jpg" />
+    <Content Include="Content\Images\Uploads\3b8a35fc-da83-47da-8928-9687e1d47942.jpg" />
+    <Content Include="Content\Images\Uploads\8c252aa9-adc8-436c-8bbe-0de1a7902529.jpg" />
+    <Content Include="Content\Images\Uploads\cacd06ae-2976-40eb-93f3-449b67c12a77.jpg" />
+    <Content Include="Content\Images\Uploads\d9509f4c-99aa-4dca-9593-e82c22f0705f.jpg" />
     <Content Include="Content\Styles\Layouts\gallery-grid-old-ie.css" />
     <Content Include="Content\Styles\Layouts\gallery-grid.css" />
     <Content Include="Content\Styles\Layouts\gallery-old-ie.css" />
@@ -147,10 +148,6 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
@@ -160,6 +157,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\Database.json" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
