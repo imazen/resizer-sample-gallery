@@ -38,7 +38,7 @@ namespace ImageResizer.Samples.Gallery.Web.ViewModels {
 
         public void Execute(HttpPostedFileBase httpPostedFile, Image image) {
             var uploadDirectory = HttpContext.Current.Server.MapPath("~/Content/Images/Uploads/");
-            httpPostedFile.SaveAs(uploadDirectory + image.FileName);
+            httpPostedFile.SaveAs(Path.Combine(uploadDirectory, image.FileName));
             Images.Add(image);
 
             string databasePath = HttpContext.Current.Server.MapPath("~/App_Data/Database.json");
