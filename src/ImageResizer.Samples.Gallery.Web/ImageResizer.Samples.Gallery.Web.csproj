@@ -141,7 +141,9 @@
     <Content Include="Content\Styles\Layouts\gallery-old-ie.css" />
     <Content Include="Content\Styles\Layouts\gallery.css" />
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
