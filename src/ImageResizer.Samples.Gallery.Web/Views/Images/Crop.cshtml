@@ -1,0 +1,16 @@
+﻿@model ImageResizer.Samples.Gallery.Web.ViewModels.CropViewModel
+
+@{
+    ViewBag.Title = "Crop - ImageResizer Responsive Photo Gallery Sample";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pure-g">
+    <div class="text-box pure-u-1 pure-u-med-2-3 pure-u-lrg-3-4">
+        <div class="l-box">
+            <h1 class="text-box-head">Crop</h1>
+            <p class="text-box-subhead">Select the region in the below image you'd like to crop.</p>
+        </div>
+    </div>
+    <img src="/Content/Images/Uploads/@Model.Image.FileName" />
+</div>
