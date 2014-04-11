@@ -55,6 +55,7 @@
     <div class="pure-u-1 form-box">
         <div class="l-box">
             <form method="post" action="@Url.Action("crop")" enctype="multipart/form-data" class="pure-form pure-form-stacked">
+                <input type="hidden" id="id" name="id" value="@Model.Image.Id">
                 <input type="hidden" id="CroppedImage" name="CroppedImage">
                 <button type="submit" class="pure-button">Save</button>
             </form>

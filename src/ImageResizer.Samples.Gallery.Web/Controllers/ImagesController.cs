@@ -3,6 +3,7 @@ using ImageResizer.Samples.Gallery.Web.Models;
 using ImageResizer.Samples.Gallery.Web.Queries;
 using ImageResizer.Samples.Gallery.Web.ViewModels;
 using System;
+using System.Globalization;
 using System.Web.Mvc;
 
 namespace ImageResizer.Samples.Gallery.Web.Controllers {
@@ -15,9 +16,10 @@ namespace ImageResizer.Samples.Gallery.Web.Controllers {
         }
 
         [HttpPost]
-        public ActionResult Crop(string croppedImage) {
-            // TODO: Save image, right now needs System.Drawing Reference to compile.
-            // ImageBuilder.Current.Build("~/" + Util.PathUtils.RemoveQueryString(croppedImage), "~/Content/Images/Cropped/cropped.jpg", new Instructions(croppedImage));
+        public ActionResult Crop(Guid id, string croppedImage) {
+            var q = new GetImageQuery();
+            Image image = q.Execute(id);
+            ImageBuilder.Current.Build("~/" + Util.PathUtils.RemoveQueryString(croppedImage), "~/Content/Images/Uploads/" + image.Id.ToString("N", NumberFormatInfo.InvariantInfo) + "_cropped.jpg", new Instructions(croppedImage));
             return RedirectToAction("Crop");
         }
     }
