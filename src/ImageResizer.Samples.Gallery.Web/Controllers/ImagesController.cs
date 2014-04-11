@@ -1,4 +1,5 @@
-﻿using ImageResizer.Samples.Gallery.Web.Models;
+﻿using ImageResizer;
+using ImageResizer.Samples.Gallery.Web.Models;
 using ImageResizer.Samples.Gallery.Web.Queries;
 using ImageResizer.Samples.Gallery.Web.ViewModels;
 using System;
@@ -6,10 +7,18 @@ using System.Web.Mvc;
 
 namespace ImageResizer.Samples.Gallery.Web.Controllers {
     public class ImagesController : Controller {
+        [HttpGet]
         public ActionResult Crop(Guid id) {
             var q = new GetImageQuery();
             Image image = q.Execute(id);
             return View(new CropViewModel { Image = image });
+        }
+
+        [HttpPost]
+        public ActionResult Crop(string croppedImage) {
+            // TODO: Save image, right now needs System.Drawing Reference to compile.
+            // ImageBuilder.Current.Build("~/" + Util.PathUtils.RemoveQueryString(croppedImage), "~/Content/Images/Cropped/cropped.jpg", new Instructions(croppedImage));
+            return RedirectToAction("Crop");
         }
     }
 }
