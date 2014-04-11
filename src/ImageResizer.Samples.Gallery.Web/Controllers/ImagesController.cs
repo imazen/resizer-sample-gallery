@@ -16,10 +16,10 @@ namespace ImageResizer.Samples.Gallery.Web.Controllers {
         }
 
         [HttpPost]
-        public ActionResult Crop(Guid id, string croppedImage) {
+        public ActionResult Crop(Guid id, string cropUrl) {
             var q = new GetImageQuery();
             Image image = q.Execute(id);
-            ImageBuilder.Current.Build("~/" + Util.PathUtils.RemoveQueryString(croppedImage), "~/Content/Images/Uploads/" + image.Id.ToString("N", NumberFormatInfo.InvariantInfo) + "_cropped.jpg", new Instructions(croppedImage));
+            ImageBuilder.Current.Build("~/" + Util.PathUtils.RemoveQueryString(cropUrl), "~/Content/Images/Uploads/" + image.Id.ToString("N", NumberFormatInfo.InvariantInfo) + "_cropped.jpg", new Instructions(cropUrl));
             return RedirectToAction("Crop");
         }
     }

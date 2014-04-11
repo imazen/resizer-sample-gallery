@@ -35,7 +35,7 @@
                     ')&cropxunits=' + image.width() + '&cropyunits=' + image.height()
 
                     //Now, update the hidden field
-                    $("#CroppedImage").val(url);
+                    $("#CropUrl").val(url);
                 }
 
                 //Start up jCrop on the image, specifying our function be called when the selection rectangle changes,
@@ -74,7 +74,7 @@
         <div class="l-box">
             <form method="post" action="@Url.Action("crop")" enctype="multipart/form-data" class="pure-form pure-form-stacked">
                 <input type="hidden" id="id" name="id" value="@Model.Image.Id">
-                <input type="hidden" id="CroppedImage" name="CroppedImage">
+                <input type="hidden" id="CropUrl" name="CropUrl">
                 <button type="submit" class="pure-button">Save</button>
             </form>
         </div>
