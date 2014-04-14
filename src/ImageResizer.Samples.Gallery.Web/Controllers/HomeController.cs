@@ -4,8 +4,10 @@ using ImageResizer.Samples.Gallery.Web.Queries;
 using ImageResizer.Samples.Gallery.Web.Services;
 using ImageResizer.Samples.Gallery.Web.ViewModels;
 using System;
+using System.Globalization;
 using System.IO;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace ImageResizer.Samples.Gallery.Web.Controllers
 {
@@ -21,7 +23,10 @@ namespace ImageResizer.Samples.Gallery.Web.Controllers
 
         public ActionResult Upload()
         {
-            foreach (string name in Request.Files.Keys) {
+            Image image = null;
+
+            if (Request.Files.Keys.Count == 1) {
+                string name = Request.Files.Keys[0];
                 var httpPostedFile = Request.Files[name];
 
                 // Save the original file
@@ -33,8 +38,8 @@ namespace ImageResizer.Samples.Gallery.Web.Controllers
                         "gif", "jpg", "png", "tif"
                     }
                 );
-                
-                var image = new Image {
+
+                image = new Image {
                     Id = new Guid(Path.GetFileNameWithoutExtension(fileName)),
                     FileName = fileName,
                     Author = Request["author"]
@@ -42,15 +47,20 @@ namespace ImageResizer.Samples.Gallery.Web.Controllers
 
                 // Limit size, convert to jpg, and autorotate
                 httpPostedFile.InputStream.Seek(0, SeekOrigin.Begin);
-                var imageJob = new ImageJob(httpPostedFile, "~/Content/Images/Uploads/Modified/<guid>.<ext>", new Instructions("width=500;height=500;format=jpg;mode=max;autorotate=true;"));
+                var imageJob = new ImageJob(
+                    httpPostedFile,
+                    "~/Content/Images/Uploads/" + image.Id.ToString("N", NumberFormatInfo.InvariantInfo) + "_500x500.<ext>",
+                    new Instructions("width=500;height=500;format=jpg;mode=max;autorotate=true;"));
                 imageJob.CreateParentDirectory = true;
                 imageJob.Build();
 
                 var saveImageQuery = new SaveImageQuery();
                 saveImageQuery.Execute(image);
             }
-            
-            return RedirectToAction("Index");
+
+            return RedirectToAction("crop", "images", new RouteValueDictionary {
+                { "id", image.Id }
+            });
         }
     }
 }
