@@ -23,6 +23,10 @@
                 //Trim the querystring off the image URL.
                 var path = image.attr('src'); if (path.indexOf('?') > 0) path = path.substr(0, path.indexOf('?'));
 
+                //Set up the preview div
+                var divPreview = container.find("div.preview");
+                divPreview.JcropPreview({ jcropImg: image });
+
                 //Define a function to execute when the cropping rectangle changes.
                 var update = function (coords) {
                     if (parseInt(coords.w) <= 0 || parseInt(coords.h) <= 0) return; //Require valid width and height
@@ -36,21 +40,11 @@
 
                     //Now, update the hidden field
                     $("#CropUrl").val(url);
-                }
+                };
 
                 //Start up jCrop on the image, specifying our function be called when the selection rectangle changes,
                 // and that a 60% black shadow should cover the cropped regions.
-                var jcropRef = $.Jcrop(image);
-                jcropRef.setOptions({
-                    onChange: update,
-                    onSelect: update,
-                    bgColor: 'black',
-                    bgOpacity: 0.6
-                });
-
-                //Set up the preview div
-                var divPreview = container.find("div.preview");
-                divPreview.JcropPreview({ jcropImg: image, jcropRef: jcropRef });
+                image.Jcrop({ onChange: update, onSelect: update, bgColor: 'black', bgOpacity: 0.6 });
 
                 //Call the function to init the preview windows
                 update({ x: 0, y: 0, x2: image.width(), y2: image.height(), w: image.width(), h: image.height() });
@@ -72,7 +66,7 @@
     </div>
     <div class="pure-u-1 form-box">
         <div class="l-box">
-            <form method="post" action="@Url.Action("crop")" enctype="multipart/form-data" class="pure-form pure-form-stacked">
+            <form method="post" action="@Url.Action("crop")" class="pure-form pure-form-stacked">
                 <input type="hidden" id="id" name="id" value="@Model.Image.Id">
                 <input type="hidden" id="CropUrl" name="CropUrl">
                 <button type="submit" class="pure-button">Save</button>
