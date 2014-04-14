@@ -1,0 +1,29 @@
+﻿@using System.Globalization;
+
+@model ImageResizer.Samples.Gallery.Web.ViewModels.DetailViewModel
+
+@{
+    ViewBag.Title = "Image Detail - ImageResizer Responsive Photo Gallery Sample";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pure-g">
+    <div class="text-box pure-u-1 pure-u-med-2-3 pure-u-lrg-3-4">
+        <div class="l-box">
+            <h1 class="text-box-head">Image Details</h1>
+            <p class="text-box-subhead">Below is the original image and the modified images using ImageResizer.</p>
+        </div>
+    </div>
+    <div class="pure-u-1">
+        <h3>Original File</h3>
+        <img src="/Content/Images/Uploads/@Model.Image.FileName" class="image" />
+    </div>
+    <div class="pure-u-1">
+        <h3>Constrained to 500x500 and autorotated</h3>
+        <img src="/Content/Images/Uploads/@String.Concat(Model.Image.Id.ToString("N", NumberFormatInfo.InvariantInfo), "_500x500.jpg")" />
+    </div>
+    <div class="pure-u-1">
+        <h3>Cropped Result</h3>
+        <img src="/Content/Images/Uploads/@String.Concat(Model.Image.Id.ToString("N", NumberFormatInfo.InvariantInfo), "_cropped.jpg")" />
+    </div>
+</div>

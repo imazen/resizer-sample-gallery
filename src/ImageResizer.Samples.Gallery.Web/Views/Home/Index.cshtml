@@ -15,7 +15,7 @@
 
 @foreach (var item in Model.Images) {
     <div class="photo-box pure-u-1 pure-u-med-1-2 pure-u-lrg-1-3">
-        <a href="#">
+        <a href="/images/detail/@item.Id">
             <img src="/Content/Images/Uploads/@item.FileName" />
         </a>
         <aside class="photo-box-caption">
