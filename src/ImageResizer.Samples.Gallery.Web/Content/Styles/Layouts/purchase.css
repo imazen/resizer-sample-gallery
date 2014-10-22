@@ -1,0 +1,107 @@
+﻿/*
+ * -- BASE STYLES --
+ * Most of these are inherited from Base, but I want to change a few.
+ */
+body {
+    color: #526066;
+}
+
+h2, h3 {
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+p {
+    line-height: 1.6em;
+}
+
+
+/*
+ * -- Layout Styles --
+ */
+.l-centering {
+    text-align:center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+
+/*
+ * -- MENU STYLES --
+ * Make the menu have a very faint box-shadow.
+ */
+.pure-menu {
+    box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
+}
+
+/* --SMALL STUFF--
+    Put in to give the picture some space away from the menu, make the
+    word "price" stick out, adjust some padding and spacing in some of the paragraphs.
+    You get the idea.
+*/
+.price {
+    font-weight:bold;
+    color:green;
+}
+
+.picture {
+    margin-top: 0px;
+    padding: 20px;
+    max-width: 250px;
+}
+.button-space{
+    padding-bottom: 10px;
+}
+
+.tiny-print{
+    font-size:0.8em;
+}
+
+.footer {
+    background: #111;
+    color: #888;
+    text-align: center;
+}
+    .footer a {
+        color: #ddd;
+    }
+
+.pure-button {
+    background-color: #FF5F5F;
+    color: white;
+    vertical-align: top;
+    font-size: 85%;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+    margin: 0.3em;
+}
+
+
+@media(min-width: 767px) {
+}
+
+@media (min-width: 480px) {
+    .picture {
+        max-width: 350px;
+    }
+    .description {
+        margin-right: 20px;
+        margin-left: 5px;
+        margin-top: 50px;
+    }
+}
+
+@media(min-width: 1067px){
+    .picture{
+        max-width: 500px;
+        }
+}
+
+
+/* What I want this to be able to do is this:
+    Mobile: swipe right and left on the picture and get other pictures.
+    Desktop/padding: thumbnails underneath are those same pictures, and also zooming stuff.
+*/
