@@ -1,0 +1,164 @@
+﻿/*
+ *Note - This stylesheet was initially taken and then heavily modified from Pure CSS's sample page
+ * for a pricing table. Go check them out at purecss.io - their software is quite awesome.
+ * -- BASE STYLES --
+ * Most of these are inherited from Base, but I want to change a few.
+ */
+body {
+    color: #526066;
+}
+
+h2, h3 {
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+p {
+    line-height: 1.6em;
+}
+
+
+/*
+ * -- Layout Styles --
+ */
+
+.container {
+    padding-top: 100px;
+    background-color: #C2EBFF;
+    padding-bottom: 50px;
+}
+
+.l-centering{
+	text-align: center;
+
+}
+
+.l-content {
+    margin: 0 auto;
+    padding-right: 0;
+    padding-bottom: 50px;
+    position: relative;
+    text-align:left;
+}
+
+
+.l-box {
+    padding: 0.5em 2em;
+}
+
+/*
+ * -- MENU STYLES --
+ * Make the menu have a very faint box-shadow.
+ */
+.pure-menu {
+    box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
+}
+
+
+/*
+ * -- BANNER --
+ * The top banner with the headings. By using a combination
+ * of `display: table;` and `display: table-cell;`, we can
+ * vertically center the text.
+ */
+
+
+.banner {
+    background-color: #297ACC;
+    text-align: center;
+    background-size: cover;
+
+    height: 200px;
+    width: 100%;
+    margin-bottom: 3em;
+    display: table;
+}
+
+    .banner-head {
+        display: table-cell;
+        vertical-align: middle;
+        margin-bottom: 0;
+        font-size: 2em;
+        color: white;
+        font-weight: 500;
+        text-shadow: 0 1px 1px black;
+    }
+
+.home-price{
+    position:absolute;
+    text-align:left;
+    font-size:12px;
+    bottom: 59px;
+    left: 0px;
+    color: white;
+    z-index:1;
+    width: 100%;
+    max-width: 300px;
+    background: -moz-linear-gradient(left,  rgba(13,132,0,1) 0%, rgba(180,221,180,0) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(13,132,0,1)), color-stop(100%,rgba(180,221,180,0))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left,  rgba(13,132,0,1) 0%,rgba(180,221,180,0) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left,  rgba(13,132,0,1) 0%,rgba(180,221,180,0) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left,  rgba(13,132,0,1) 0%,rgba(180,221,180,0) 100%); /* IE10+ */
+    background: linear-gradient(to right,  rgba(13,132,0,1) 0%,rgba(180,221,180,0) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0d8400', endColorstr='#00b4ddb4',GradientType=1 ); /* IE6-9 */
+
+
+}
+
+.footer {
+    background: #111;
+    color: #888;
+    text-align: center;
+}
+    .footer a {
+        color: #ddd;
+    }
+
+.pic-size {
+    max-width: 300px;
+    z-index: -1;
+    position: static;
+}
+
+.name{
+    text-align: center;
+    max-width:300px;
+    
+}
+
+.name a {
+    text-decoration: none;
+    color: black;
+}
+
+.cart {
+    position: relative;
+    right: 30px;
+    text-align:right;
+}
+
+/*
+ * -- TABLET MEDIA QUERIES --
+ */
+
+
+@media(min-width: 767px) {
+
+    .banner-head {
+        font-size: 4em;
+    }
+}
+
+/*
+ * -- PHONE MEDIA QUERIES --
+ * On phones, we want to reduce the height and font-size of the banner further
+ */
+@media (min-width: 480px) {
+    .banner {
+        height: 200px;
+    }
+    .banner-head {
+        font-size: 3em;
+    }
+}
