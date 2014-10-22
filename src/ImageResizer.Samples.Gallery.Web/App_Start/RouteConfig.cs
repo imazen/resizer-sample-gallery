@@ -18,6 +18,16 @@ namespace ImageResizer.Samples.Gallery.Web
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "ImageResizerest",
+                url: "imageresizerest/{action}/{id}",
+                defaults: new { controller = "ImageResizerest", action = "Index", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "BuyStuff",
+                url: "buystuff/{action}/{id}",
+                defaults: new { controller = "BuyStuff", action = "Index", id = UrlParameter.Optional }
+            );
         }
     }
 }
