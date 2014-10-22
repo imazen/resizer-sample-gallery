@@ -31,5 +31,10 @@ namespace ImageResizer.Samples.Gallery.Web.Controllers {
                 { "id", image.Id }
             });
         }
+
+        public ActionResult PurchasePage()
+        {
+            return View(new PurchasePageViewModel());
+        }
     }
 }
