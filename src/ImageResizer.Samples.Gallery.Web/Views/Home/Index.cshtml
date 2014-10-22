@@ -5,6 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section head {
+    <link rel="stylesheet" href="/Content/Styles/Layouts/gallery.css">
+    <link rel="stylesheet" href="/Content/Styles/Layouts/gallery-grid.css">
+}
+
 <div class="pure-g">
     <div class="text-box pure-u-1 pure-u-med-2-3 pure-u-lrg-3-4">
         <div class="l-box">
@@ -16,7 +21,7 @@
 @foreach (var item in Model.Images) {
     <div class="photo-box pure-u-1 pure-u-med-1-2 pure-u-lrg-1-3">
         <a href="/images/detail/@item.Id">
-            <img src="/Content/Images/Uploads/@item.FileName" />
+            <img src="/Content/Images/Uploads/@item.FileName@item.EditQuery" />
         </a>
         <aside class="photo-box-caption">
             <span>by <a href="#">@item.Author</a></span>
