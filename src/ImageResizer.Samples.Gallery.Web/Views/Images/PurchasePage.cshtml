@@ -1,0 +1,69 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section head {
+
+    <link rel="stylesheet" href="~/Content/Styles/Layouts/blueimp-gallery.min.css">
+    <link rel="stylesheet" href="~/Content/Styles/Layouts/blueimp-gallery.min.css">
+    <link rel="stylesheet" href="/Content/Styles/Layouts/purchase.css">
+    <link rel="stylesheet" href="/Content/Styles/Layouts/gallery-grid.css">
+
+}
+
+<div class="l-centering">
+    <div class="pure-g">
+        <div class="pure-u-1 pure-u-med-1 pure-u-lrg-1-2">
+
+            <div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel">
+                <div class="slides"></div>
+                <h3 class="title"></h3>
+                <a class="prev">‹</a>
+                <a class="next">›</a>
+                <a class="play-pause"></a>
+                <ol class="indicator"></ol>
+            </div>
+            <!--Eventually download the appropriate plugins necessary for different filters-->
+            <div id="links">
+                <a href="~/Content/Images/Uploads/0074aeaa136340a69e981b4a40099770.jpg?width=500" title="Cherry Tree">
+                </a>
+                <a href="~/Content/Images/Uploads/0074aeaa136340a69e981b4a40099770.jpg?width=500" title="Cherry Tree">
+                </a>
+                <a href="~/Content/Images/Uploads/0074aeaa136340a69e981b4a40099770.jpg?width=500" title="Cherry Tree">
+                </a>
+            </div>
+        </div>
+        <div class="pure-u-1 pure-u-med-1 pure-u-lrg-1-2">
+            <div class="description">
+                <p>
+                    You might've clicked on something else, but we really, REALLY want you to buy this cherry tree. I mean
+                    look at it! It's all blossomy and pretty. Why WOULDN'T you buy this tree?
+                </p>
+                <p>
+                    Check out its splendor in all sorts of cool filters.
+                </p>
+
+                <p>
+                    <div class="price"> Price:</div> $1.00
+                </p>
+                <div class="button-space">
+                    <button class="pure-button">Buy the Stuff!</button>
+                </div>
+                <a href="~/BuyStuff/Index" class="tiny-print"> Back to other buyable stuff </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Content/Scripts/js/blueimp-gallery.min.js"></script>
+<script>
+    blueimp.Gallery(
+        document.getElementById('links').getElementsByTagName('a'),
+        {
+            container: '#blueimp-gallery-carousel',
+            carousel: true
+        }
+    );
+</script>
+
