@@ -23,20 +23,20 @@
             </div>
             <ol class="indicator" id="indicator"></ol>
             <!--Eventually download the appropriate plugins necessary for different filters-->
-            <div id="links">
+            <div id="links" class="externalThumbnails">
                 <a href="~/Content/Images/Uploads/0074aeaa136340a69e981b4a40099770.jpg?width=500">
                     <img class="picture" src="~/Content/Images/Uploads/0074aeaa136340a69e981b4a40099770.jpg?width=100" alt="Cherry Tree">
                 </a>
 
-                <a href="~/Content/Images/Uploads/0074aeaa136340a69e981b4a40099770.jpg?width=500">
-                    <img class="picture" src="~/Content/Images/Uploads/0074aeaa136340a69e981b4a40099770.jpg?width=100" alt="Cherry Tree">
+                <a href="~/Content/Images/Uploads/105e66628d0e4e319e951929f3b7cb4b.jpg?width=500">
+                    <img class="picture" src="~/Content/Images/Uploads/105e66628d0e4e319e951929f3b7cb4b.jpg?width=100" alt="Cherry Tree">
                 </a>
                 <a href="~/Content/Images/Uploads/0074aeaa136340a69e981b4a40099770.jpg?width=500">
                     <img class="picture" src="~/Content/Images/Uploads/0074aeaa136340a69e981b4a40099770.jpg?width=100" alt="Cherry Tree">
                 </a>
             </div>
         </div>
-        <div class="pure-u-1 pure-u-med-1 pure-u-lrg-1-2">
+        <div class="pure-u-1 pure-u-med-1 pure-u-lrg-1-2 zoomContainer">
             <div class="description">
                 <p>
                     You might've clicked on something else, but we really, REALLY want you to buy this cherry tree. I mean
@@ -81,7 +81,9 @@
 -->
 
 <script src="~/Content/Scripts/slimmage.js"></script>
-<script src="~/Content/Scripts/js/blueimp-gallery.min.js"></script>
+<script src="~/Content/Scripts/js/blueimp-helper.js"></script>
+<script src="~/Content/Scripts/js/blueimp-gallery.js"></script>
+<!--<script src="~/Content/Scripts/js/blueimp-gallery-indicator.js"></script>-->
 <script type="text/javascript">
 
     var getDivWidth = function (target) {
@@ -107,19 +109,93 @@
             window.slimmage.adjustImageSrcWithWidth(img, anchors[i].href, responsiveWidth);
             anchors[i].href = img.src;
         }
+       
 
 
-        blueimp.Gallery(
+        var gallery = blueimp.Gallery(
 
             document.getElementById('links').getElementsByTagName('a'),
             {
                 container: '#blueimp-gallery-carousel',
                 carousel: true,
+                emulateTouchEvents:false,
                 indicatorContainer: '#indicator',
                 slideContentClass: 'slide-content data-slimmage'
             }
             
         );
+
+        var createZoom = function (path) {
+            var mask = document.createElement("div");
+            mask.classList.add("mask-div");
+            var parent = document.querySelector(".zoomContainer");
+
+
+            mask.style.overflow = "hidden";
+            
+            
+            parent.insertBefore(mask,parent.firstChild);
+            var img = document.createElement("img");
+            img.src = path; //
+
+            mask.appendChild(img);
+
+
+            zoomContainer.
+        };
+        
+        (function ($){
+            var slideImages = $("img.slide-content");
+            for (var i = 0; i < slideImages.length; i++) {
+                $(slideImages[i]).on("mousemove", function (ev) {
+                    //ev.x
+                    //ev.y
+
+                    console.log(ev.x);
+                });
+
+            }
+        })(blueimp.helper)
+        
+        var oldMove = gallery.onmousemove;
+        gallery.onmousemove = function (ev) {
+            //oldMove.call(ev);
+            //console.log(ev.x);
+        };
+        for (var i = 0; i < anchors.length; i++) {
+            var inner = function (anchor, index) {
+                var a = blueimp.helper(anchor);
+                a.on("click", function (ev) {
+                    console.log("Firing handler for anchor " + index);
+                    gallery.slide(index);
+                    blueimp.Gallery.prototype.preventDefault(ev);
+                });
+                var prevHandler = gallery.handleSlide;
+                gallery.handleSlide = function (ix) {
+                    prevHandler.call(this, ix);
+                    if (index == ix) {
+                        a.addClass("active");
+                    } else {
+                        a.removeClass("active");
+                    }
+                };
+
+            };
+            inner(anchors[i], i);
+        }
+        
+        
+
+        //for (var i = 0; i < anchors.length; i++) {
+        //    anchors[i].setAttribute("data-slide-index", i);
+        //    blueimp.helper(anchors[i]).on("click", function (ev) {
+        //        var ix = parseInt(ev.currentTarget.getAttribute("data-slide-index"));
+        //        console.log("Firing handler for anchor " + ix);
+        //        window.gallery.slide(ix);
+        //        blueimp.Gallery.prototype.preventDefault(ev);
+
+        //    });
+        //}
 
 
     };
