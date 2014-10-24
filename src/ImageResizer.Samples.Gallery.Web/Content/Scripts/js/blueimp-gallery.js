@@ -191,7 +191,7 @@
             closeOnSlideClick: false,
             closeOnSwipeUpOrDown: false,
             disableScroll: false,
-            startSlideshow: true
+            startSlideshow: false,
         },
 
         console: window.console && typeof window.console.log === 'function' ?
