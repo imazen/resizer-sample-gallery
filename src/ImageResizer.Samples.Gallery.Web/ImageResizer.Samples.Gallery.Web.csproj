@@ -171,6 +171,9 @@
     <Content Include="Content\Images\Uploads\bd9f954137c64f26979add43c560e1f3.jpg" />
     <Content Include="Content\Images\Uploads\bd9f954137c64f26979add43c560e1f3_500x500.jpg" />
     <Content Include="Content\Images\Uploads\bd9f954137c64f26979add43c560e1f3_cropped.jpg" />
+    <Content Include="Content\Images\Uploads\george.jpg" />
+    <Content Include="Content\Images\Uploads\joyce.jpg" />
+    <Content Include="Content\Images\Uploads\kanye.jpg" />
     <Content Include="Content\Scripts\jquery.jcrop.preview.js" />
     <Content Include="Content\Scripts\js\blueimp-gallery-fullscreen.js" />
     <Content Include="Content\Scripts\js\blueimp-gallery-indicator.js" />
@@ -182,6 +185,8 @@
     <Content Include="Content\Scripts\js\blueimp-helper.js" />
     <Content Include="Content\Scripts\js\jquery.blueimp-gallery.js" />
     <Content Include="Content\Scripts\js\jquery.blueimp-gallery.min.js" />
+    <Content Include="Content\Scripts\slimmage.js" />
+    <Content Include="Content\Scripts\slimmage.min.js" />
     <Content Include="Content\Styles\Layouts\blueimp-gallery-indicator.css" />
     <Content Include="Content\Styles\Layouts\blueimp-gallery.css" />
     <Content Include="Content\Styles\Layouts\blueimp-gallery.min.css" />
