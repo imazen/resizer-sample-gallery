@@ -4,8 +4,8 @@
 
 @section head {
 
-    <link rel="stylesheet" href="~/Content/Styles/Layouts/blueimp-gallery.min.css">
-    <link rel="stylesheet" href="~/Content/Styles/Layouts/blueimp-gallery.min.css">
+    <link rel="stylesheet" href="~/Content/Styles/Layouts/blueimp-gallery.css">
+<link rel="stylesheet" href="~/Content/Styles/Layouts/blueimp-gallery-indicator.css">
     <link rel="stylesheet" href="/Content/Styles/Layouts/purchase.css">
     <link rel="stylesheet" href="/Content/Styles/Layouts/gallery-grid.css">
 
@@ -20,16 +20,19 @@
                 <h3 class="title"></h3>
                 <a class="prev">‹</a>
                 <a class="next">›</a>
-                <a class="play-pause"></a>
-                <ol class="indicator"></ol>
             </div>
+            <ol class="indicator" id="indicator"></ol>
             <!--Eventually download the appropriate plugins necessary for different filters-->
             <div id="links">
-                <a href="~/Content/Images/Uploads/0074aeaa136340a69e981b4a40099770.jpg?width=500" title="Cherry Tree">
+                <a href="~/Content/Images/Uploads/0074aeaa136340a69e981b4a40099770.jpg?width=500">
+                    <img class="picture" src="~/Content/Images/Uploads/0074aeaa136340a69e981b4a40099770.jpg?width=100" alt="Cherry Tree">
                 </a>
-                <a href="~/Content/Images/Uploads/0074aeaa136340a69e981b4a40099770.jpg?width=500" title="Cherry Tree">
+
+                <a href="~/Content/Images/Uploads/0074aeaa136340a69e981b4a40099770.jpg?width=500">
+                    <img class="picture" src="~/Content/Images/Uploads/0074aeaa136340a69e981b4a40099770.jpg?width=100" alt="Cherry Tree">
                 </a>
-                <a href="~/Content/Images/Uploads/0074aeaa136340a69e981b4a40099770.jpg?width=500" title="Cherry Tree">
+                <a href="~/Content/Images/Uploads/0074aeaa136340a69e981b4a40099770.jpg?width=500">
+                    <img class="picture" src="~/Content/Images/Uploads/0074aeaa136340a69e981b4a40099770.jpg?width=100" alt="Cherry Tree">
                 </a>
             </div>
         </div>
@@ -55,15 +58,72 @@
     </div>
 </div>
 
+<!--<div class="pure-u-1">
+    <div class="comment-section">
+        <h2>Comments</h2>
+        <div class="comment">
+            <noscript data-slimmage><img class="profile-pic" src="~/Content/Images/Uploads/george.jpg?width=200px">
+            </noscript><p class="person">Georgie W</p><br /><br />
+            <p class="review">I cannot tell a lie. The quality of my Buy Stuff! cherry tree was excellent. Too bad it was met with an... accident.</p>
+        </div>
+        <div class="comment">
+            <noscript data-slimmage><img class="profile-pic" src="~/Content/Images/Uploads/kanye.jpg?width=200px">
+            </noscript><p class="person">YaBoy Kanye</p><br />
+            <p class="review">Imma let you finish, but orange trees are the best fruit trees of all time!</p>
+        </div>
+        <div class="comment">
+            <noscript data-slimmage><img class="profile-pic" src="~/Content/Images/Uploads/joyce.jpg?width=200px">
+            </noscript><p class="person">Ms Kilmer</p><br />
+            <p class="review">Poems are made by fools like me, but only Buy Stuff! can send a tree.</p>
+        </div>
+     </div>
+</div>
+-->
 
+<script src="~/Content/Scripts/slimmage.js"></script>
 <script src="~/Content/Scripts/js/blueimp-gallery.min.js"></script>
-<script>
-    blueimp.Gallery(
-        document.getElementById('links').getElementsByTagName('a'),
-        {
-            container: '#blueimp-gallery-carousel',
-            carousel: true
+<script type="text/javascript">
+
+    var getDivWidth = function (target) {
+        var hyphenProp = "width";
+        var val = typeof (window.getComputedStyle) != "undefined" && window.getComputedStyle(target, null).getPropertyValue(hyphenProp);
+        if (!val && target.currentStyle) {
+            val = target.currentStyle[hyphenProp.replace(/([a-z])\-([a-z])/, function (a, b, c) { return b + c.toUpperCase(); })] || target.currentStyle[hyphenProp];
         }
-    );
+        if (val.slice(-2) == "px") return parseFloat(val.slice(0, -2));
+        return null;
+    };
+    window.slimmage.readyCallback = function(){
+        if (window.slimmage.galleried) return;
+        window.slimmage.galleried = true;
+
+
+        var responsiveWidth = getDivWidth(document.getElementById('links'));
+
+        var anchors = document.getElementById('links').getElementsByTagName('a');
+
+        for (var i = 0; i < anchors.length; i++) {
+            var img = document.createElement("img");
+            window.slimmage.adjustImageSrcWithWidth(img, anchors[i].href, responsiveWidth);
+            anchors[i].href = img.src;
+        }
+
+
+        blueimp.Gallery(
+
+            document.getElementById('links').getElementsByTagName('a'),
+            {
+                container: '#blueimp-gallery-carousel',
+                carousel: true,
+                indicatorContainer: '#indicator',
+                slideContentClass: 'slide-content data-slimmage'
+            }
+            
+        );
+
+
+    };
 </script>
+
+
 
