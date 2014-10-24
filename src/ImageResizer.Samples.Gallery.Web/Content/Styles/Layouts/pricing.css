@@ -39,7 +39,6 @@ p {
     padding-right: 0;
     padding-bottom: 50px;
     position: relative;
-    text-align:left;
 }
 
 
@@ -71,7 +70,6 @@ p {
 
     height: 200px;
     width: 100%;
-    margin-bottom: 3em;
     display: table;
 }
 
@@ -133,9 +131,19 @@ p {
 }
 
 .cart {
-    position: relative;
-    right: 30px;
-    text-align:right;
+    display:block;
+    position: static;
+    padding: 5px;
+    padding-bottom: 10px;
+    background-color: #C2EBFF;
+    border: 1px solid black;
+    border-radius: 5px;
+    z-index: -1;
+    overflow: hidden;
+    margin-bottom: -10px;
+    width: 40px;
+    text-align: center;
+
 }
 
 /*
