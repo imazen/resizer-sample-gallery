@@ -31,14 +31,9 @@
 
     $.extend(Gallery.prototype.options, {
         // The tag name, Id, element or querySelector of the indicator container:
-        indicatorContainer: 'ol',
+        externalIndicatorContainer: '.externalThumbnails',
         // The class for the active indicator:
-        activeIndicatorClass: 'active',
-        // The list object property (or data attribute) with the thumbnail URL,
-        // used as alternative to a thumbnail child element:
-        thumbnailProperty: 'thumbnail',
-        // Defines if the gallery indicators should display a thumbnail:
-        thumbnailIndicators: true
+        activeExternalIndicatorClass: 'active',
     });
 
     var initSlides = Gallery.prototype.initSlides,
@@ -50,75 +45,39 @@
 
     $.extend(Gallery.prototype, {
 
-        createIndicator: function (obj) {
-            var indicator = this.indicatorPrototype.cloneNode(false),
-                title = this.getItemProperty(obj, this.options.titleProperty),
-                thumbnailProperty = this.options.thumbnailProperty,
-                thumbnailUrl,
-                thumbnail;
-            if (this.options.thumbnailIndicators) {
-                thumbnail = obj.getElementsByTagName && $(obj).find('img')[0];
-                if (thumbnail) {
-                    thumbnailUrl = thumbnail.src;
-                } else if (thumbnailProperty) {
-                    thumbnailUrl = this.getItemProperty(obj, thumbnailProperty);
+        setActiveExternalIndicator: function (index) {
+            if (this.externalIndicators) {
+                if (this.activeExternalIndicator) {
+                    this.activeExternalIndicator
+                        .removeClass(this.options.activeExternalIndicatorClass);
                 }
-                if (thumbnailUrl) {
-                    indicator.style.backgroundImage = 'url("' + thumbnailUrl + '")';
-                }
-            }
-            if (title) {
-                indicator.title = title;
-            }
-            return indicator;
-        },
-
-        addIndicator: function (index) {
-            if (this.indicatorContainer.length) {
-                var indicator = this.createIndicator(this.list[index]);
-                indicator.setAttribute('data-index', index);
-                this.indicatorContainer[0].appendChild(indicator);
-                this.indicators.push(indicator);
-            }
-        },
-
-        setActiveIndicator: function (index) {
-            if (this.indicators) {
-                if (this.activeIndicator) {
-                    this.activeIndicator
-                        .removeClass(this.options.activeIndicatorClass);
-                }
-                this.activeIndicator = $(this.indicators[index]);
-                this.activeIndicator
-                    .addClass(this.options.activeIndicatorClass);
+                this.activeExternalIndicator = $(this.externalIndicators[index]);
+                this.activeExternalIndicator
+                    .addClass(this.options.activeExternalIndicatorClass);
             }
         },
 
         initSlides: function (reload) {
             if (!reload) {
-                this.indicatorContainer = this.container.find(
-                    this.options.indicatorContainer
-                );
-                if (this.indicatorContainer.length) {
-                    this.indicatorPrototype = document.createElement('li');
-                    this.indicators = this.indicatorContainer[0].children;
+                this.externalIndicatorContainer = $(this.options.externalIndicatorContainer);
+
+                if (this.externalIndicatorContainer.length) {
+                    this.externalIndicators = this.externalIndicatorContainer[0].children;
+                    var gallery = this;
+                    for (var i = 0; i < this.externalIndicators.length; i++) {
+                        this.externalIndicators[i].set
+                        $(this.externalIndicators[i]).on('click', function (ev) {
+                            gallery.preventDefault(ev);
+                            gallery.slide(i);
+                        });
+                    }
                 }
             }
             initSlides.call(this, reload);
         },
 
-        addSlide: function (index) {
-            addSlide.call(this, index);
-            this.addIndicator(index);
-        },
 
-        resetSlides: function () {
-            resetSlides.call(this);
-            this.indicatorContainer.empty();
-            this.indicators = [];
-        },
-
-        handleClick: function (event) {
+       /* handleClick: function (event) {
             var target = event.target || event.srcElement,
                 parent = target.parentNode;
             if (parent === this.indicatorContainer[0]) {
@@ -132,17 +91,17 @@
             } else {
                 return handleClick.call(this, event);
             }
-        },
+        },*/
 
         handleSlide: function (index) {
             handleSlide.call(this, index);
-            this.setActiveIndicator(index);
+            this.setActiveExternalIndicator(index);
         },
 
         handleClose: function () {
-            if (this.activeIndicator) {
-                this.activeIndicator
-                    .removeClass(this.options.activeIndicatorClass);
+            if (this.activeExternalIndicator) {
+                this.activeExternalIndicator
+                    .removeClass(this.options.activeExternalIndicatorClass);
             }
             handleClose.call(this);
         }
