@@ -24,14 +24,16 @@
             <ol class="indicator" id="indicator"></ol>
             <!--Eventually download the appropriate plugins necessary for different filters-->
             <div id="links" class="externalThumbnails">
-                <a href="~/Content/Images/Uploads/0074aeaa136340a69e981b4a40099770.jpg?width=500">
+                <!--The "style="text-decoration:none"" prevents tiny black lines from appearing between the thumbnails,
+                    which are underlines for the anchor tag.-->
+                <a style="text-decoration:none" href="~/Content/Images/Uploads/0074aeaa136340a69e981b4a40099770.jpg?width=500">
                     <img class="picture" src="~/Content/Images/Uploads/0074aeaa136340a69e981b4a40099770.jpg?width=100" alt="Cherry Tree">
                 </a>
 
-                <a href="~/Content/Images/Uploads/105e66628d0e4e319e951929f3b7cb4b.jpg?width=500">
+                <a style ="text-decoration:none" href="~/Content/Images/Uploads/105e66628d0e4e319e951929f3b7cb4b.jpg?width=500">
                     <img class="picture" src="~/Content/Images/Uploads/105e66628d0e4e319e951929f3b7cb4b.jpg?width=100" alt="Cherry Tree">
                 </a>
-                <a href="~/Content/Images/Uploads/0074aeaa136340a69e981b4a40099770.jpg?width=500">
+                <a style="text-decoration:none" href="~/Content/Images/Uploads/0074aeaa136340a69e981b4a40099770.jpg?width=500">
                     <img class="picture" src="~/Content/Images/Uploads/0074aeaa136340a69e981b4a40099770.jpg?width=100" alt="Cherry Tree">
                 </a>
             </div>
@@ -136,12 +138,12 @@
             
             parent.insertBefore(mask,parent.firstChild);
             var img = document.createElement("img");
-            img.src = path; //
+            img.src = path; 
 
             mask.appendChild(img);
 
 
-            zoomContainer.
+
         };
         
         (function ($){
