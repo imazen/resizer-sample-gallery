@@ -127,11 +127,10 @@
             
         );
 
-        var createZoom = function (path, x, y) {
+        var createZoom = function (path) {
             var mask = document.createElement("div");
             mask.classList.add("mask-div");
             var parent = document.querySelector(".zoomContainer");
-            
             
             parent.insertBefore(mask,parent.firstChild);
             var img = document.createElement("img");
@@ -139,38 +138,28 @@
 
             mask.appendChild(img);
 
-
-            img.style.display = "relative"
-            img.style.left = x;
-            img.style.bottom = y;
-            return mask;
+            return [mask,img];
         };
-
-        //(function ($){
-        //    var slideImages = $("img.slide-content");
-        //    for (var i = 0; i < slideImages.length; i++) {
-        //        (function () {
-        //            var img = $(slideImages[i]);
-                    
-        //            img.on("mousemove", function (ev) {
-
-
-        //                //ev.x
-        //                //ev.y
-        //                console.log(ev.x)
-        //            });
-        //        })();
-
-
-        //    }
-        //})(blueimp.helper)
         
-        var oldMove = gallery.onmousemove;
-        gallery.onmousemove = function (ev) {
-            //oldMove.call(ev);
-            //console.log(ev.x);
-        };
 
+        var adjustZoom = function (parent, image, original, ev) {
+            var rect = original.getBoundingClientRect()
+            var x = ev.pageX - rect.left - document.body.scrollLeft;
+            var y = ev.pageY - rect.top - document.body.scrollTop;
+
+            var xratio = x / original.offsetWidth;
+
+            var xrange = image.offsetWidth - parent.offsetWidth;
+            image.style.left = (xratio * -xrange) + "px";
+
+            var yratio = y / original.offsetHeight;
+
+            var yrange = image.offsetHeight - parent.offsetHeight;
+            image.style.top = (yratio * -yrange) + "px";
+
+            image.style.position = "relative";
+        };
+        
         (function ($) {
             var slideImages = $("img.slide-content");             for (var i = 0; i < slideImages.length; i++) {
                 
@@ -179,14 +168,19 @@
                     var img = $(slideImages[i]);
                     var imgDom = slideImages[i];
                     var zoom = null;
-                    img.on("mouseover", function (ev) {
-                        if (zoom == null)
-                            zoom = createZoom(imgDom.src, ev.x, ev.y);
+                    
+                    img.on("mouseover mousemove", function (ev) {
+                        if (zoom == null) {
+                            zoom = createZoom(imgDom.src);
+                        }
                         //adjust zoom here
+                        adjustZoom(zoom[0], zoom[1],imgDom,ev)
+                                        
                     });
+                   
                     img.on("mouseout", function (ev) {
                         if (zoom != null) {
-                            zoom.parentElement.removeChild(zoom);
+                            zoom[0].parentElement.removeChild(zoom[0]);
                             zoom = null;
                         }
                     });
@@ -194,12 +188,11 @@
             };
         })(blueimp.helper)
 
-
+        var mq = window.matchMedia("(min-width: 480px)");
         for (var i = 0; i < anchors.length; i++) {
             var inner = function (anchor, index) {
                 var a = blueimp.helper(anchor);
                 a.on("click", function (ev) {
-                    console.log("Firing handler for anchor " + index);
                     gallery.slide(index);
                     blueimp.Gallery.prototype.preventDefault(ev);
                 });
