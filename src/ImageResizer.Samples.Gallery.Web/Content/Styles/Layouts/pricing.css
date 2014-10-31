@@ -39,6 +39,7 @@ p {
     padding-right: 0;
     padding-bottom: 50px;
     position: relative;
+    max-width: 300px;
 }
 
 
@@ -83,26 +84,18 @@ p {
         text-shadow: 0 1px 1px black;
     }
 
-.home-price{
-    position:absolute;
-    text-align:left;
-    font-size:12px;
-    bottom: 59px;
-    left: 0px;
+.home-price{   
+    text-align:center;
     color: white;
-    z-index:1;
-    width: 100%;
-    max-width: 300px;
-    background: -moz-linear-gradient(left,  rgba(13,132,0,1) 0%, rgba(180,221,180,0) 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(13,132,0,1)), color-stop(100%,rgba(180,221,180,0))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(left,  rgba(13,132,0,1) 0%,rgba(180,221,180,0) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(left,  rgba(13,132,0,1) 0%,rgba(180,221,180,0) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(left,  rgba(13,132,0,1) 0%,rgba(180,221,180,0) 100%); /* IE10+ */
-    background: linear-gradient(to right,  rgba(13,132,0,1) 0%,rgba(180,221,180,0) 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0d8400', endColorstr='#00b4ddb4',GradientType=1 ); /* IE6-9 */
-
+    font-weight:bold;
+    display: inline;
+    background-color:#297ACC;
+    border-radius: 5px;
+    padding: 3px;
+    font-size: 0.8em;
 
 }
+
 
 .footer {
     background: #111;
@@ -122,6 +115,7 @@ p {
 .name{
     text-align: center;
     max-width:300px;
+    margin-bottom: 10px;
     
 }
 
