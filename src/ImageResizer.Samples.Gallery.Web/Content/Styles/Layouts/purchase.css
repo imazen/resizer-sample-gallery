@@ -117,6 +117,14 @@ p {
     display: inline;
     margin-left: 5px;
 }
+.mask-div{
+        display: none;
+        position: absolute;
+        background-color: black;
+        margin-left: 50px;
+        box-shadow: 0px 0px 15px black;
+        overflow: hidden;
+    }
 
 
 @media (min-width: 480px) {
@@ -131,17 +139,33 @@ p {
     .comment-section{
         margin-left: 10px;
     }
+    
+    
+
+    
 }
 
 @media(min-width: 767px) {
-    .profile-pic{
-        max-width:150px;
+    .profile-pic {
+        max-width: 150px;
+    }
+
+    .mask-div {
+        max-height: 250px;
+        max-width: 350px;
+        display: block;
+    }
+    
 }
 
 @media(min-width: 1067px){
     .picture{
         max-width: 500px;
         }
+    .mask-div {
+        max-height: 350px;
+        max-width: 450px;
+    }
 }
 
 
