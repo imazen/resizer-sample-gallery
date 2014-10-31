@@ -30,8 +30,8 @@
                     <img class="picture" src="~/Content/Images/Uploads/0074aeaa136340a69e981b4a40099770.jpg?width=100" alt="Cherry Tree">
                 </a>
 
-                <a style ="text-decoration:none" href="~/Content/Images/Uploads/105e66628d0e4e319e951929f3b7cb4b.jpg?width=500">
-                    <img class="picture" src="~/Content/Images/Uploads/105e66628d0e4e319e951929f3b7cb4b.jpg?width=100" alt="Cherry Tree">
+                <a style="text-decoration:none" href="~/Content/Images/Uploads/07f411165e50434c9400d8f17bcd6638.jpg?width=500">
+                    <img class="picture" src="~/Content/Images/Uploads/07f411165e50434c9400d8f17bcd6638.jpg?width=100" alt="Cherry Tree">
                 </a>
                 <a style="text-decoration:none" href="~/Content/Images/Uploads/0074aeaa136340a69e981b4a40099770.jpg?width=500">
                     <img class="picture" src="~/Content/Images/Uploads/0074aeaa136340a69e981b4a40099770.jpg?width=100" alt="Cherry Tree">
@@ -86,7 +86,7 @@
 <script src="~/Content/Scripts/js/blueimp-helper.js"></script>
 <script src="~/Content/Scripts/js/blueimp-gallery.js"></script>
 <!--<script src="~/Content/Scripts/js/blueimp-gallery-indicator.js"></script>-->
-<script type="text/javascript">
+<script>
 
     var getDivWidth = function (target) {
         var hyphenProp = "width";
@@ -127,13 +127,10 @@
             
         );
 
-        var createZoom = function (path) {
+        var createZoom = function (path, x, y) {
             var mask = document.createElement("div");
             mask.classList.add("mask-div");
             var parent = document.querySelector(".zoomContainer");
-
-
-            mask.style.overflow = "hidden";
             
             
             parent.insertBefore(mask,parent.firstChild);
@@ -143,27 +140,61 @@
             mask.appendChild(img);
 
 
-
+            img.style.display = "relative"
+            img.style.left = x;
+            img.style.bottom = y;
+            return mask;
         };
-        
-        (function ($){
-            var slideImages = $("img.slide-content");
-            for (var i = 0; i < slideImages.length; i++) {
-                $(slideImages[i]).on("mousemove", function (ev) {
-                    //ev.x
-                    //ev.y
 
-                    console.log(ev.x);
-                });
+        //(function ($){
+        //    var slideImages = $("img.slide-content");
+        //    for (var i = 0; i < slideImages.length; i++) {
+        //        (function () {
+        //            var img = $(slideImages[i]);
+                    
+        //            img.on("mousemove", function (ev) {
 
-            }
-        })(blueimp.helper)
+
+        //                //ev.x
+        //                //ev.y
+        //                console.log(ev.x)
+        //            });
+        //        })();
+
+
+        //    }
+        //})(blueimp.helper)
         
         var oldMove = gallery.onmousemove;
         gallery.onmousemove = function (ev) {
             //oldMove.call(ev);
             //console.log(ev.x);
         };
+
+        (function ($) {
+            var slideImages = $("img.slide-content");             for (var i = 0; i < slideImages.length; i++) {
+                
+                (function(){
+                    var sharedData = 0
+                    var img = $(slideImages[i]);
+                    var imgDom = slideImages[i];
+                    var zoom = null;
+                    img.on("mouseover", function (ev) {
+                        if (zoom == null)
+                            zoom = createZoom(imgDom.src, ev.x, ev.y);
+                        //adjust zoom here
+                    });
+                    img.on("mouseout", function (ev) {
+                        if (zoom != null) {
+                            zoom.parentElement.removeChild(zoom);
+                            zoom = null;
+                        }
+                    });
+                })();
+            };
+        })(blueimp.helper)
+
+
         for (var i = 0; i < anchors.length; i++) {
             var inner = function (anchor, index) {
                 var a = blueimp.helper(anchor);
