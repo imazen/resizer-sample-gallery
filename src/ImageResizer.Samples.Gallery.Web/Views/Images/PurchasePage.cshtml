@@ -7,13 +7,12 @@
     <link rel="stylesheet" href="~/Content/Styles/Layouts/blueimp-gallery.css">
 <link rel="stylesheet" href="~/Content/Styles/Layouts/blueimp-gallery-indicator.css">
     <link rel="stylesheet" href="/Content/Styles/Layouts/purchase.css">
-    <link rel="stylesheet" href="/Content/Styles/Layouts/gallery-grid.css">
 
 }
 
 <div class="l-centering">
     <div class="pure-g">
-        <div class="pure-u-1 pure-u-med-1 pure-u-lrg-1-2">
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-2">
 
             <div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel">
                 <div class="slides"></div>
@@ -38,7 +37,7 @@
                 </a>
             </div>
         </div>
-        <div class="pure-u-1 pure-u-med-1 pure-u-lrg-1-2 zoomContainer">
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-2 zoomContainer">
             <div class="description">
                 <p>
                     You might've clicked on something else, but we really, REALLY want you to buy this cherry tree. I mean
@@ -59,28 +58,6 @@
         </div>
     </div>
 </div>
-
-<!--<div class="pure-u-1">
-    <div class="comment-section">
-        <h2>Comments</h2>
-        <div class="comment">
-            <noscript data-slimmage><img class="profile-pic" src="~/Content/Images/Uploads/george.jpg?width=200px">
-            </noscript><p class="person">Georgie W</p><br /><br />
-            <p class="review">I cannot tell a lie. The quality of my Buy Stuff! cherry tree was excellent. Too bad it was met with an... accident.</p>
-        </div>
-        <div class="comment">
-            <noscript data-slimmage><img class="profile-pic" src="~/Content/Images/Uploads/kanye.jpg?width=200px">
-            </noscript><p class="person">YaBoy Kanye</p><br />
-            <p class="review">Imma let you finish, but orange trees are the best fruit trees of all time!</p>
-        </div>
-        <div class="comment">
-            <noscript data-slimmage><img class="profile-pic" src="~/Content/Images/Uploads/joyce.jpg?width=200px">
-            </noscript><p class="person">Ms Kilmer</p><br />
-            <p class="review">Poems are made by fools like me, but only Buy Stuff! can send a tree.</p>
-        </div>
-     </div>
-</div>
--->
 
 <script src="~/Content/Scripts/slimmage.js"></script>
 <script src="~/Content/Scripts/js/blueimp-helper.js"></script>
@@ -160,6 +137,7 @@
             image.style.position = "relative";
         };
         
+        
         (function ($) {
             var slideImages = $("img.slide-content");             for (var i = 0; i < slideImages.length; i++) {
                 
@@ -184,11 +162,17 @@
                             zoom = null;
                         }
                     });
+                    img.on("click", function (ev) {
+                        var mq = window.matchMedia("(max-width: 480px)");
+                        if (mq.matches) {
+                            window.location = imgDom.src;   
+                        }
+                    });
                 })();
             };
         })(blueimp.helper)
 
-        var mq = window.matchMedia("(min-width: 480px)");
+       
         for (var i = 0; i < anchors.length; i++) {
             var inner = function (anchor, index) {
                 var a = blueimp.helper(anchor);
@@ -225,6 +209,7 @@
 
 
     };
+
 </script>
 
 
