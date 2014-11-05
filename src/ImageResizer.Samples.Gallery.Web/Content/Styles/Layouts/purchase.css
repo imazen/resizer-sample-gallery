@@ -47,7 +47,7 @@ p {
 
 .picture {
     margin-top: 0px;
-    max-width: 250px;
+
 }
 .button-space{
     padding-bottom: 10px;
@@ -78,33 +78,6 @@ p {
     margin: 0.3em;
 }
 
-.comment-section {
-    margin-left: 5px;
-}
-
-.comment{
-    display: block;
-    background-color: #C2EBFF;
-    border-radius:10px;
-    float: right;
-    width: 95%;
-    padding-left: 5px;
-    margin-bottom:5px;
-    margin-right: 5px;
-    -mox-box-shadow: inset 0 0 5px #77777;
-    -webkit-box-shadow: inset 0 0 5px #77777;
-    box-shadow: inset 0 0 5px black;
-}
-.profile-pic{
-    display: block;
-    max-width:100px;
-    border-radius:10px;
-    margin-top: 5px;
-    float:left;
-    margin-bottom: 10px;
-
-}
-
 .person {
     font-weight:bold;
     color: #505050;
@@ -113,10 +86,7 @@ p {
     margin-left: 5px;
 }
 
-.review {
-    display: inline;
-    margin-left: 5px;
-}
+
 .mask-div{
         display: none;
         position: absolute;
@@ -125,6 +95,8 @@ p {
         box-shadow: 0px 0px 15px black;
         overflow: hidden;
     }
+
+
 
 
 @media (min-width: 480px) {
