@@ -14,10 +14,6 @@
     <h1 class="banner-head"><i class="icon-basket"></i>Buying Stuff with Money<br/> </h1>
 </div>
 
-<div class="cart">
-    <a href="#">Cart</a>
-</div>
-
 <div class="container">
     <div class="l-centering">
         <!--Fix the centering issue now that the grid issue is resolved-->
@@ -25,7 +21,7 @@
         <div class="pure-g">
             @foreach (var item in Model.Images)
             {
-                <div class="pure-u-1-3">
+                <div class="pure-u-1-1 pure-u-sm-1-2 pure-u-med-1-2 pure-u-lg-1-3">
                     <div class="l-content">
                         <a href="/images/purchasepage/#">
                             <img class="pic-size" src="/Content/Images/Uploads/@item.FileName@item.EditQuery" />
