@@ -147,33 +147,6 @@
     <Content Include="Content\Images\img\play-pause.svg" />
     <Content Include="Content\Images\img\video-play.png" />
     <Content Include="Content\Images\img\video-play.svg" />
-    <Content Include="Content\Images\Uploads\0074aeaa136340a69e981b4a40099770.jpg" />
-    <Content Include="Content\Images\Uploads\0074aeaa136340a69e981b4a40099770_500x500.jpg" />
-    <Content Include="Content\Images\Uploads\0074aeaa136340a69e981b4a40099770_cropped.jpg" />
-    <Content Include="Content\Images\Uploads\07f411165e50434c9400d8f17bcd6638.jpg" />
-    <Content Include="Content\Images\Uploads\07f411165e50434c9400d8f17bcd6638_500x500.jpg" />
-    <Content Include="Content\Images\Uploads\07f411165e50434c9400d8f17bcd6638_cropped.jpg" />
-    <Content Include="Content\Images\Uploads\105e66628d0e4e319e951929f3b7cb4b.jpg" />
-    <Content Include="Content\Images\Uploads\105e66628d0e4e319e951929f3b7cb4b_500x500.jpg" />
-    <Content Include="Content\Images\Uploads\105e66628d0e4e319e951929f3b7cb4b_cropped.jpg" />
-    <Content Include="Content\Images\Uploads\4244a1bbdc5a49969015d96fbc077b48.jpg" />
-    <Content Include="Content\Images\Uploads\4244a1bbdc5a49969015d96fbc077b48_500x500.jpg" />
-    <Content Include="Content\Images\Uploads\4244a1bbdc5a49969015d96fbc077b48_cropped.jpg" />
-    <Content Include="Content\Images\Uploads\4507c316e51242ccbbbd565c02712b8e.jpg" />
-    <Content Include="Content\Images\Uploads\4507c316e51242ccbbbd565c02712b8e_500x500.jpg" />
-    <Content Include="Content\Images\Uploads\4507c316e51242ccbbbd565c02712b8e_cropped.jpg" />
-    <Content Include="Content\Images\Uploads\75d76e518f4b4ea8a72cd3a6d6a90cf4.jpg" />
-    <Content Include="Content\Images\Uploads\75d76e518f4b4ea8a72cd3a6d6a90cf4_500x500.jpg" />
-    <Content Include="Content\Images\Uploads\75d76e518f4b4ea8a72cd3a6d6a90cf4_cropped.jpg" />
-    <Content Include="Content\Images\Uploads\afae1df295894530ba1cec98f86172d7.jpg" />
-    <Content Include="Content\Images\Uploads\afae1df295894530ba1cec98f86172d7_500x500.jpg" />
-    <Content Include="Content\Images\Uploads\afae1df295894530ba1cec98f86172d7_cropped.jpg" />
-    <Content Include="Content\Images\Uploads\bd9f954137c64f26979add43c560e1f3.jpg" />
-    <Content Include="Content\Images\Uploads\bd9f954137c64f26979add43c560e1f3_500x500.jpg" />
-    <Content Include="Content\Images\Uploads\bd9f954137c64f26979add43c560e1f3_cropped.jpg" />
-    <Content Include="Content\Images\Uploads\george.jpg" />
-    <Content Include="Content\Images\Uploads\joyce.jpg" />
-    <Content Include="Content\Images\Uploads\kanye.jpg" />
     <Content Include="Content\Scripts\jquery.jcrop.preview.js" />
     <Content Include="Content\Scripts\js\blueimp-gallery-fullscreen.js" />
     <Content Include="Content\Scripts\js\blueimp-gallery-indicator.js" />
@@ -249,6 +222,9 @@
     <Content Include="Content\Font\fontello.eot" />
     <Content Include="Content\Font\fontello.ttf" />
     <Content Include="Content\Font\fontello.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Images\Uploads\.gitignore" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
