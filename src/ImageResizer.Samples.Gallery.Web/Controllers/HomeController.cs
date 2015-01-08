@@ -39,10 +39,15 @@ namespace ImageResizer.Samples.Gallery.Web.Controllers
                     }
                 );
 
+                var originalInfo = ImageResizer.ImageBuilder.Current.LoadImageInfo(fileName,null);
+               
+
                 image = new Image {
                     Id = new Guid(Path.GetFileNameWithoutExtension(fileName)),
                     FileName = fileName,
-                    Author = Request["author"]
+                    Author = Request["author"],
+                    StoredHeight = (int)originalInfo["source.width"],
+                    StoredWidth = (int)originalInfo["source.height"],
                 };
 
                 // Limit size, convert to jpg, and autorotate
