@@ -61,7 +61,30 @@
 }
 div.gallery .boxInner:hover .titleBox, div.touch .boxInner.touchFocus .titleBox {
     margin-bottom: 0;
+ }
+
+.form-box {
+    text-align: center;
+    font-size: 120%;
+    border-bottom: 1px solid #eee;
 }
+
+    .form-box .pure-button {
+        background-color: #61B842;
+        color: white;
+        vertical-align: top;
+        font-size: 85%;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border-radius: 4px;
+        margin: 0.3em;
+    }
+    .pure-form input[type] {
+        margin: 0.3em auto;
+        text-align: center;
+    }
+
 @media only screen and (max-width : 480px) {
     .box {
     width: 100%;
