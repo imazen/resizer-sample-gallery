@@ -116,6 +116,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BuyStuffController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageResizerestController.cs" />
@@ -128,6 +129,7 @@
     <Compile Include="Queries\GetImageQuery.cs" />
     <Compile Include="Queries\SaveImageQuery.cs" />
     <Compile Include="Services\ImageUploader.cs" />
+    <Compile Include="ViewModels\Admin.cs" />
     <Compile Include="ViewModels\PurchasePageViewModel.cs" />
     <Compile Include="ViewModels\BuyStuffViewModel.cs" />
     <Compile Include="ViewModels\CropViewModel.cs" />
@@ -162,6 +164,7 @@
     <Content Include="Content\Scripts\masonry.min.js" />
     <Content Include="Content\Scripts\slimmage.js" />
     <Content Include="Content\Scripts\slimmage.min.js" />
+    <Content Include="Content\Styles\Layouts\admin.css" />
     <Content Include="Content\Styles\Layouts\blueimp-gallery-indicator.css" />
     <Content Include="Content\Styles\Layouts\blueimp-gallery.css" />
     <Content Include="Content\Styles\Layouts\blueimp-gallery.min.css" />
@@ -225,6 +228,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Images\Uploads\.gitignore" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
