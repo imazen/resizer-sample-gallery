@@ -20,7 +20,7 @@ namespace ImageResizer.Samples.Gallery.Web.Controllers
         {
             return View(new HomeViewModel());
         }
-
+       
         public ActionResult Upload()
         {
             Image image = null;
@@ -29,6 +29,11 @@ namespace ImageResizer.Samples.Gallery.Web.Controllers
                 string name = Request.Files.Keys[0];
                 var httpPostedFile = Request.Files[name];
 
+                //Get image dimensions
+                httpPostedFile.InputStream.Seek(0, SeekOrigin.Begin);
+                var originalInfo = ImageResizer.ImageBuilder.Current.LoadImageInfo(httpPostedFile, null);
+               
+              
                 // Save the original file
                 var imageUploader = new ImageUploader();
                 var fileName = imageUploader.SaveUploadedFileSafely(
@@ -39,15 +44,15 @@ namespace ImageResizer.Samples.Gallery.Web.Controllers
                     }
                 );
 
-                var originalInfo = ImageResizer.ImageBuilder.Current.LoadImageInfo(fileName,null);
-               
+                
 
                 image = new Image {
                     Id = new Guid(Path.GetFileNameWithoutExtension(fileName)),
                     FileName = fileName,
                     Author = Request["author"],
-                    StoredHeight = (int)originalInfo["source.width"],
-                    StoredWidth = (int)originalInfo["source.height"],
+                    Description = Request["description"],
+                    StoredWidth = (int)originalInfo["source.width"],
+                    StoredHeight = (int)originalInfo["source.height"],
                 };
 
                 // Limit size, convert to jpg, and autorotate
@@ -59,13 +64,16 @@ namespace ImageResizer.Samples.Gallery.Web.Controllers
                 imageJob.CreateParentDirectory = true;
                 imageJob.Build();
 
+                //Save image record to database
                 var saveImageQuery = new SaveImageQuery();
                 saveImageQuery.Execute(image);
-            }
 
-            return RedirectToAction("crop", "images", new RouteValueDictionary {
-                { "id", image.Id }
-            });
+                return RedirectToAction("crop", "images", new RouteValueDictionary {
+                    { "id", image.Id }
+                });
+            }
+            //TODO: they didn't attach a file. Complain, or something.
+            return RedirectToAction("index", "home");
         }
     }
 }
