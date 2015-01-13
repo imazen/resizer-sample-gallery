@@ -13,7 +13,7 @@
     var originalSize = new System.Drawing.Size(i.StoredWidth, i.StoredHeight);
     var estimatedSize =  ImageBuilder.Current.GetFinalSize(originalSize, query);
 
-    <img class="item" width="@estimatedSize.Width" height="@estimatedSize.Height" 
+    <img width="@estimatedSize.Width" height="@estimatedSize.Height" 
          src="/Content/Images/Uploads/@i.FileName@query.ToQueryString()" />
 }
 
@@ -28,10 +28,11 @@
         <div id="container">
             @foreach (var item in Model.Images)
             {
-                //This needs something to make sure the hot air balloon picture gets more space.
-                <a href="/images/detail/@item.Id">
-                    @SizedImage(item, 200);
-                </a>
+                <div class="item">
+                    <a href="/images/detail/@item.Id">
+                        @SizedImage(item, 300)
+                    </a>
+                </div>
             }
             
         </div>
