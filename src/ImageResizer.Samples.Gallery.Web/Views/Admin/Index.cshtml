@@ -1,0 +1,39 @@
+﻿@model ImageResizer.Samples.Gallery.Web.ViewModels.AdminViewModel
+
+@{
+    ViewBag.Title = "ImageResizer Sample Admin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section head {
+    <link rel="stylesheet" href="/Content/Styles/Layouts/admin.css">
+    <link rel="stylesheet" href="~/Content/Styles/Layouts/fontello.css">
+}
+
+
+<h1>The Admin Page</h1>
+
+
+@foreach (var item in Model.Images)
+    {
+        <div class="box">
+            <div class="boxInner">
+                <img src="/Content/Images/Uploads/@item.FileName@item.EditQuery?width=400" />
+                <p>Author: @item.Author </p>
+                <p>Description: @item.Description</p>
+            </div>
+        </div>
+    }
+
+
+
+<div class="pure-u-1">
+    <div class="l-box">
+        <h2>An Admin Page Layout</h2>
+
+        <p>
+            This page was made with thanks to Pure and its fabulous grid system.
+        </p>
+
+    </div>
+</div>
