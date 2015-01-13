@@ -47,15 +47,29 @@
 
 <div class="u-1 form-box">
     <div class="l-box">
-        <h2>Submit a Photo</h2>
+        <h2>Submit a Photo (Destructive)</h2>
 
-        <form class="pure-form">
-            <input type="text" placeholder="Photo URL" required>
-            <input type="text" placeholder="Photographer">
+        <form action="~/home/upload" method="post" class="pure-form" enctype="multipart/form-data">
+            <input type="file" name="fileField">
+            <input type="text" name= "description" placeholder="Description" required>
+            <input type="text" name="author" placeholder="Photographer" required>
             <button type="submit" class="pure-button">Submit</button>
         </form>
     </div>
 </div>
+
+<!--<div class="u-1 form-box">
+    <div class="l-box">
+        <h2>Submit a Photo (Non-Destructive)</h2>
+
+        <form action="~/home/upload2" method="post" class="pure-form" enctype="multipart/form-data">
+            <input type="file" name="fileField">
+            <input type="text" name="description" placeholder="Description" required>
+            <input type="text" name="author" placeholder="Photographer" required>
+            <button type="submit" class="pure-button">Submit</button>
+        </form>
+    </div>
+</div>-->
 
 <div class="pure-u-1">
     <div class="l-box">
