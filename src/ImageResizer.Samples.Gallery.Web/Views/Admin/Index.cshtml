@@ -21,6 +21,9 @@
                 <img src="/Content/Images/Uploads/@item.FileName@item.EditQuery?width=400" />
                 <p>Author: @item.Author </p>
                 <p>Description: @item.Description</p>
+                <form action="~/home/delete" method="delete" class="pure-form">
+                    <button type="submit" class="pure-button">Delete Photo</button>
+                </form>
             </div>
         </div>
     }

@@ -10,6 +10,7 @@
     position: relative;
     width: 33.3%;
     padding-bottom: 40%;
+/*Add breakpoints as this gets smaller that makes the bottom padding bigger and the width less restrictive*/
     
     
 }
@@ -36,3 +37,14 @@
 
 }
 
+.pure-button {
+        background-color: #ED5151;
+        color: white;
+        vertical-align: top;
+        font-size: 85%;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border-radius: 4px;
+        margin: 0.3em;
+    }
