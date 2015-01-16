@@ -11,22 +11,29 @@
 }
 
 
-<h1>The Admin Page</h1>
+<h1 style="text-align: center;">The Admin Page</h1>
 
-
-@foreach (var item in Model.Images)
+<div class="pure-g">
+    @foreach (var item in Model.Images)
     {
-        <div class="box">
+        <div class="box pure-u-1-2">
             <div class="boxInner">
-                <img src="/Content/Images/Uploads/@item.FileName@item.EditQuery?width=400" />
-                <p>Author: @item.Author </p>
-                <p>Description: @item.Description</p>
-                <form action="~/home/delete" method="delete" class="pure-form">
-                    <button type="submit" class="pure-button">Delete Photo</button>
-                </form>
+                <img class="pure-u-1-2"src="/Content/Images/Uploads/@item.FileName@item.EditQuery?width=400" style="margin-left: 10px; margin-top: 10px;" />
+                <div class="pure-u-1-2" style="margin-top: 20px;">
+                    <div>Author: @item.Author </div>
+                    <div>Description: @item.Description</div>
+                    <form action="~/admin/delete/@item.Id" method="delete" class="pure-form">
+                        <button type="submit" class="pure-button">Delete Photo</button>
+                    </form>
+                </div>
             </div>
         </div>
     }
+</div>
+
+
+
+
 
 
 
