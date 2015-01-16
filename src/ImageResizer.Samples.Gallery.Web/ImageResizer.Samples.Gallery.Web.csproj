@@ -47,6 +47,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\ImageResizer.Mvc.3.4.3\lib\ImageResizer.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="ImageResizer.Plugins.SimpleFilters">
+      <HintPath>..\..\packages\ImageResizer.Plugins.SimpleFilters.3.4.3\lib\ImageResizer.Plugins.SimpleFilters.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -126,6 +129,7 @@
     </Compile>
     <Compile Include="Models\Image.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\DeleteImageQuery.cs" />
     <Compile Include="Queries\GetImageQuery.cs" />
     <Compile Include="Queries\SaveImageQuery.cs" />
     <Compile Include="Services\ImageUploader.cs" />
