@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.IO;
+using ImageResizer.Samples.Gallery.Web.Models;
+using ImageResizer.Samples.Gallery.Web.Queries;
 
 namespace ImageResizer.Samples.Gallery.Web.Controllers
 {
@@ -15,42 +17,35 @@ namespace ImageResizer.Samples.Gallery.Web.Controllers
             return View(new ImageResizer.Samples.Gallery.Web.ViewModels.AdminViewModel());
         }
        
-        /*public ActionResult Delete()
-        {
+        public ActionResult Delete(Guid id) {
+            var q = new GetImageQuery();
+            Image img = q.Execute(id);
+       
+           
+            var prefix = Path.GetFileNameWithoutExtension(img.FileName);
+            var sourceDir = System.Web.Hosting.HostingEnvironment.MapPath("~/Content/Images/Uploads/");
 
-            string sourceDir = @"c:\current";
+            /*Console.WriteLine("GetFileNameWithoutExtension('{0}') returns '{1}'", 
+                fileName, result);
 
-            try
+            result = Path.GetFileName(path);
+            Console.WriteLine("GetFileName('{0}') returns '{1}'", 
+                path, result);
+            */
+
+         
+            string[] picList = Directory.GetFiles(sourceDir, prefix + "*.*");
+
+            // Copy picture files. 
+            foreach (string f in picList)
             {
-                string[] picList = Directory.GetFiles(sourceDir, "*.jpg");
-
-                // Copy picture files. 
-                foreach (string f in picList)
-                {
-                    // Remove path from the file name. 
-                    string fName = f.Substring(sourceDir.Length + 1);
-
-                    // Use the Path.Combine method to safely append the file name to the path. 
-                    // Will overwrite if the destination file already exists.
-                    File.Copy(Path.Combine(sourceDir, fName), Path.Combine(backupDir, fName), true);
-                }
-
-                // Delete source files that were copied. 
-                foreach (string f in txtList)
-                {
-                    File.Delete(f);
-                }
-                foreach (string f in picList)
-                {
-                    File.Delete(f);
-                }
+                System.IO.File.Delete(f);
             }
 
-            catch (DirectoryNotFoundException dirNotFound)
-            {
-                Console.WriteLine(dirNotFound.Message);
-            }
-        }*/
-
+            var delete = new DeleteImageQuery();
+            delete.Execute(img);
+            return  RedirectToAction("index", "admin");
+        }
+        
     }
 }
